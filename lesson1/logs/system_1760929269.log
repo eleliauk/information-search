@@ -1,0 +1,451 @@
+2025-10-20 11:01:09,404 - __main__ - INFO - 日志系统初始化完成
+2025-10-20 11:01:09,404 - __main__ - INFO - 开始收集新闻数据，目标数量: 500
+2025-10-20 11:01:09,405 - src.crawler.news_spider - INFO - 开始收集新闻数据，目标数量: 500
+2025-10-20 11:01:09,576 - src.crawler.news_spider - INFO - 成功生成 500 篇模拟新闻数据
+2025-10-20 11:01:09,577 - src.crawler.news_spider - INFO - 成功收集 500 篇新闻数据
+2025-10-20 11:01:09,580 - src.crawler.news_spider - INFO - 原始数据已保存到: data/raw/raw_news_20251020_110109.json
+2025-10-20 11:01:09,580 - __main__ - INFO - 新闻数据已保存到: data/raw/raw_news_20251020_110109.json
+2025-10-20 11:01:09,581 - __main__ - INFO - 开始数据分析...
+2025-10-20 11:01:09,581 - src.preprocessing.analyzer - INFO - 开始进行综合数据分析...
+2025-10-20 11:01:11,016 - src.preprocessing.analyzer - INFO - 数据分析完成
+2025-10-20 11:01:11,016 - jieba - DEBUG - Building prefix dict from the default dictionary ...
+2025-10-20 11:01:11,018 - jieba - DEBUG - Loading model from cache /var/folders/g9/mb3n4wc53yq5ych7fnz_q7z80000gn/T/jieba.cache
+2025-10-20 11:01:11,250 - jieba - DEBUG - Loading model cost 0.234 seconds.
+2025-10-20 11:01:11,251 - jieba - DEBUG - Prefix dict has been built successfully.
+2025-10-20 11:01:11,269 - src.preprocessing.tokenizer - INFO - 已加载自定义词典: config/news_dict.txt
+2025-10-20 11:01:11,270 - src.preprocessing.tokenizer - INFO - 从文件加载停用词: 101 个
+2025-10-20 11:01:11,270 - src.preprocessing.tokenizer - INFO - 停用词加载完成，共 174 个
+2025-10-20 11:01:11,270 - src.preprocessing.tokenizer - INFO - 中文分词器初始化完成
+2025-10-20 11:01:11,270 - src.preprocessing.tokenizer - INFO - 开始分词分析...
+2025-10-20 11:01:11,270 - src.preprocessing.tokenizer - INFO - 分词进度: 1/500 (466033.8 docs/sec)
+2025-10-20 11:01:14,496 - src.preprocessing.tokenizer - INFO - 分词进度: 101/500 (31.3 docs/sec)
+2025-10-20 11:01:14,633 - src.preprocessing.tokenizer - INFO - 分词进度: 201/500 (59.8 docs/sec)
+2025-10-20 11:01:14,770 - src.preprocessing.tokenizer - INFO - 分词进度: 301/500 (86.0 docs/sec)
+2025-10-20 11:01:14,904 - src.preprocessing.tokenizer - INFO - 分词进度: 401/500 (110.3 docs/sec)
+2025-10-20 11:01:15,048 - src.preprocessing.tokenizer - INFO - 批量分词完成，处理 500 个文档，耗时 3.78 秒
+2025-10-20 11:01:15,063 - src.preprocessing.tokenizer - INFO - 分词分析完成
+2025-10-20 11:01:15,065 - src.preprocessing.analyzer - INFO - 开始创建可视化图表...
+2025-10-20 11:01:15,995 - src.preprocessing.analyzer - ERROR - 绘制质量评估图失败: object of type 'int' has no len()
+2025-10-20 11:01:15,995 - src.preprocessing.analyzer - INFO - 所有图表创建完成
+2025-10-20 11:01:15,996 - src.preprocessing.analyzer - INFO - 分析报告已保存到: data/analysis/analysis_report.json
+2025-10-20 11:01:15,996 - __main__ - INFO - 数据可视化图表已生成
+2025-10-20 11:01:15,996 - __main__ - INFO - 开始构建检索系统...
+2025-10-20 11:01:16,024 - src.preprocessing.tokenizer - INFO - 已加载自定义词典: config/news_dict.txt
+2025-10-20 11:01:16,025 - src.preprocessing.tokenizer - INFO - 从文件加载停用词: 101 个
+2025-10-20 11:01:16,025 - src.preprocessing.tokenizer - INFO - 停用词加载完成，共 174 个
+2025-10-20 11:01:16,025 - src.preprocessing.tokenizer - INFO - 中文分词器初始化完成
+2025-10-20 11:01:16,025 - src.retrieval.search_engine - INFO - 中文新闻检索系统初始化完成
+2025-10-20 11:01:16,025 - src.retrieval.search_engine - INFO - 开始建立文档索引，文档数量: 500
+2025-10-20 11:01:16,025 - src.retrieval.search_engine - INFO - 执行原始数据分析...
+2025-10-20 11:01:16,025 - src.preprocessing.analyzer - INFO - 开始进行综合数据分析...
+2025-10-20 11:01:17,465 - src.preprocessing.analyzer - INFO - 数据分析完成
+2025-10-20 11:01:17,465 - src.retrieval.search_engine - INFO - 执行分词分析...
+2025-10-20 11:01:17,465 - src.preprocessing.tokenizer - INFO - 开始分词分析...
+2025-10-20 11:01:17,465 - src.preprocessing.tokenizer - INFO - 分词进度: 1/500 (1048576.0 docs/sec)
+2025-10-20 11:01:19,229 - src.preprocessing.tokenizer - INFO - 分词进度: 101/500 (57.3 docs/sec)
+2025-10-20 11:01:19,367 - src.preprocessing.tokenizer - INFO - 分词进度: 201/500 (105.7 docs/sec)
+2025-10-20 11:01:19,539 - src.preprocessing.tokenizer - INFO - 分词进度: 301/500 (145.2 docs/sec)
+2025-10-20 11:01:19,670 - src.preprocessing.tokenizer - INFO - 分词进度: 401/500 (181.9 docs/sec)
+2025-10-20 11:01:19,814 - src.preprocessing.tokenizer - INFO - 批量分词完成，处理 500 个文档，耗时 2.35 秒
+2025-10-20 11:01:19,829 - src.preprocessing.tokenizer - INFO - 分词分析完成
+2025-10-20 11:01:19,830 - src.retrieval.search_engine - INFO - 构建TF-IDF检索模型...
+2025-10-20 11:01:19,830 - src.retrieval.tfidf - INFO - 开始训练TF-IDF检索模型，文档数量: 500
+2025-10-20 11:01:19,830 - src.retrieval.tfidf - INFO - 文档分词中...
+2025-10-20 11:01:19,830 - src.preprocessing.tokenizer - INFO - 分词进度: 1/500 (1048576.0 docs/sec)
+2025-10-20 11:01:19,963 - src.preprocessing.tokenizer - INFO - 分词进度: 101/500 (758.2 docs/sec)
+2025-10-20 11:01:20,091 - src.preprocessing.tokenizer - INFO - 分词进度: 201/500 (770.4 docs/sec)
+2025-10-20 11:01:20,222 - src.preprocessing.tokenizer - INFO - 分词进度: 301/500 (767.0 docs/sec)
+2025-10-20 11:01:20,352 - src.preprocessing.tokenizer - INFO - 分词进度: 401/500 (768.2 docs/sec)
+2025-10-20 11:01:20,490 - src.preprocessing.tokenizer - INFO - 批量分词完成，处理 500 个文档，耗时 0.66 秒
+2025-10-20 11:01:20,490 - src.retrieval.tfidf - INFO - 开始TF-IDF向量化，文档数量: 500
+2025-10-20 11:01:20,490 - src.retrieval.tfidf - INFO - 构建词汇表...
+2025-10-20 11:01:20,495 - src.retrieval.tfidf - INFO - 词汇表构建完成，词汇数量: 283
+2025-10-20 11:01:20,495 - src.retrieval.tfidf - INFO - 原始词汇数: 283, 过滤后词汇数: 283
+2025-10-20 11:01:20,495 - src.retrieval.tfidf - INFO - 计算IDF值...
+2025-10-20 11:01:20,500 - src.retrieval.tfidf - INFO - IDF计算完成
+2025-10-20 11:01:20,500 - src.retrieval.tfidf - INFO - 向量化进度: 0/500
+2025-10-20 11:01:20,503 - src.retrieval.tfidf - INFO - 向量化进度: 100/500
+2025-10-20 11:01:20,505 - src.retrieval.tfidf - INFO - 向量化进度: 200/500
+2025-10-20 11:01:20,507 - src.retrieval.tfidf - INFO - 向量化进度: 300/500
+2025-10-20 11:01:20,509 - src.retrieval.tfidf - INFO - 向量化进度: 400/500
+2025-10-20 11:01:20,514 - src.retrieval.tfidf - INFO - TF-IDF矩阵构建完成，形状: (500, 283)
+2025-10-20 11:01:20,514 - src.retrieval.tfidf - INFO - 矩阵稀疏度: 0.8180
+2025-10-20 11:01:20,514 - src.retrieval.tfidf - INFO - TF-IDF检索模型训练完成
+2025-10-20 11:01:20,515 - src.retrieval.search_engine - INFO - 分析结果已保存
+2025-10-20 11:01:20,515 - src.retrieval.search_engine - INFO - 索引构建完成，耗时: 4.49秒
+2025-10-20 11:01:20,515 - __main__ - INFO - 开始系统评估...
+2025-10-20 11:01:20,515 - src.evaluation.metrics - INFO - 开始评估检索质量，测试查询数量: 10
+2025-10-20 11:01:20,515 - src.evaluation.metrics - INFO - 评估查询: '人工智能' (单词查询)
+2025-10-20 11:01:20,515 - src.retrieval.similarity - INFO - 开始检索: '人工智能'
+2025-10-20 11:01:20,517 - src.retrieval.similarity - INFO - 检索完成，找到 10 条结果，耗时 0.0022 秒
+2025-10-20 11:01:20,518 - src.evaluation.metrics - INFO - 评估查询: '新冠疫情防控' (短语查询)
+2025-10-20 11:01:20,518 - src.retrieval.similarity - INFO - 开始检索: '新冠疫情防控'
+2025-10-20 11:01:20,518 - src.retrieval.similarity - INFO - 未找到满足阈值的相似文档
+2025-10-20 11:01:20,518 - src.evaluation.metrics - INFO - 评估查询: '经济发展 政策' (多词查询)
+2025-10-20 11:01:20,518 - src.retrieval.similarity - INFO - 开始检索: '经济发展 政策'
+2025-10-20 11:01:20,519 - src.retrieval.similarity - INFO - 检索完成，找到 10 条结果，耗时 0.0005 秒
+2025-10-20 11:01:20,519 - src.evaluation.metrics - INFO - 评估查询: '北京冬奥会开幕式' (实体查询)
+2025-10-20 11:01:20,519 - src.retrieval.similarity - INFO - 开始检索: '北京冬奥会开幕式'
+2025-10-20 11:01:20,519 - src.retrieval.similarity - INFO - 检索完成，找到 10 条结果，耗时 0.0005 秒
+2025-10-20 11:01:20,519 - src.evaluation.metrics - INFO - 评估查询: '碳达峰碳中和目标' (复合概念查询)
+2025-10-20 11:01:20,519 - src.retrieval.similarity - INFO - 开始检索: '碳达峰碳中和目标'
+2025-10-20 11:01:20,520 - src.retrieval.similarity - INFO - 未找到满足阈值的相似文档
+2025-10-20 11:01:20,520 - src.evaluation.metrics - INFO - 评估查询: '机器学习算法' (技术词汇查询)
+2025-10-20 11:01:20,520 - src.retrieval.similarity - INFO - 开始检索: '机器学习算法'
+2025-10-20 11:01:20,521 - src.retrieval.similarity - INFO - 检索完成，找到 10 条结果，耗时 0.0011 秒
+2025-10-20 11:01:20,522 - src.evaluation.metrics - INFO - 评估查询: '疫苗接种' (热点话题查询)
+2025-10-20 11:01:20,522 - src.retrieval.similarity - INFO - 开始检索: '疫苗接种'
+2025-10-20 11:01:20,522 - src.retrieval.similarity - INFO - 未找到满足阈值的相似文档
+2025-10-20 11:01:20,522 - src.evaluation.metrics - INFO - 评估查询: '绿色发展' (政策概念查询)
+2025-10-20 11:01:20,522 - src.retrieval.similarity - INFO - 开始检索: '绿色发展'
+2025-10-20 11:01:20,523 - src.retrieval.similarity - INFO - 检索完成，找到 10 条结果，耗时 0.0005 秒
+2025-10-20 11:01:20,523 - src.evaluation.metrics - INFO - 评估查询: '数字经济' (经济概念查询)
+2025-10-20 11:01:20,523 - src.retrieval.similarity - INFO - 开始检索: '数字经济'
+2025-10-20 11:01:20,523 - src.retrieval.similarity - INFO - 检索完成，找到 10 条结果，耗时 0.0005 秒
+2025-10-20 11:01:20,523 - src.evaluation.metrics - INFO - 评估查询: '智能制造' (产业概念查询)
+2025-10-20 11:01:20,523 - src.retrieval.similarity - INFO - 开始检索: '智能制造'
+2025-10-20 11:01:20,524 - src.retrieval.similarity - INFO - 检索完成，找到 10 条结果，耗时 0.0005 秒
+2025-10-20 11:01:20,524 - src.evaluation.metrics - INFO - 检索质量评估完成
+2025-10-20 11:01:20,524 - src.evaluation.metrics - INFO - 开始系统性能评估，迭代次数: 20
+2025-10-20 11:01:20,524 - src.retrieval.similarity - INFO - 开始检索: '机器学习算法'
+2025-10-20 11:01:20,525 - src.retrieval.similarity - INFO - 检索完成，找到 10 条结果，耗时 0.0005 秒
+2025-10-20 11:01:20,525 - src.retrieval.similarity - INFO - 开始检索: '机器学习算法'
+2025-10-20 11:01:20,525 - src.retrieval.similarity - INFO - 检索完成，找到 10 条结果，耗时 0.0005 秒
+2025-10-20 11:01:20,525 - src.retrieval.similarity - INFO - 开始检索: '新冠疫情防控'
+2025-10-20 11:01:20,526 - src.retrieval.similarity - INFO - 未找到满足阈值的相似文档
+2025-10-20 11:01:20,526 - src.retrieval.similarity - INFO - 开始检索: '绿色发展'
+2025-10-20 11:01:20,527 - src.retrieval.similarity - INFO - 检索完成，找到 10 条结果，耗时 0.0005 秒
+2025-10-20 11:01:20,527 - src.retrieval.similarity - INFO - 开始检索: '智能制造'
+2025-10-20 11:01:20,527 - src.retrieval.similarity - INFO - 检索完成，找到 10 条结果，耗时 0.0006 秒
+2025-10-20 11:01:20,527 - src.retrieval.similarity - INFO - 开始检索: '经济发展 政策'
+2025-10-20 11:01:20,528 - src.retrieval.similarity - INFO - 检索完成，找到 10 条结果，耗时 0.0006 秒
+2025-10-20 11:01:20,528 - src.retrieval.similarity - INFO - 开始检索: '人工智能'
+2025-10-20 11:01:20,529 - src.retrieval.similarity - INFO - 检索完成，找到 10 条结果，耗时 0.0007 秒
+2025-10-20 11:01:20,529 - src.retrieval.similarity - INFO - 开始检索: '疫苗接种'
+2025-10-20 11:01:20,529 - src.retrieval.similarity - INFO - 未找到满足阈值的相似文档
+2025-10-20 11:01:20,529 - src.retrieval.similarity - INFO - 开始检索: '经济发展 政策'
+2025-10-20 11:01:20,530 - src.retrieval.similarity - INFO - 检索完成，找到 10 条结果，耗时 0.0006 秒
+2025-10-20 11:01:20,530 - src.retrieval.similarity - INFO - 开始检索: '新冠疫情防控'
+2025-10-20 11:01:20,531 - src.retrieval.similarity - INFO - 未找到满足阈值的相似文档
+2025-10-20 11:01:20,531 - src.retrieval.similarity - INFO - 开始检索: '绿色发展'
+2025-10-20 11:01:20,531 - src.retrieval.similarity - INFO - 检索完成，找到 10 条结果，耗时 0.0005 秒
+2025-10-20 11:01:20,531 - src.retrieval.similarity - INFO - 开始检索: '疫苗接种'
+2025-10-20 11:01:20,532 - src.retrieval.similarity - INFO - 未找到满足阈值的相似文档
+2025-10-20 11:01:20,532 - src.retrieval.similarity - INFO - 开始检索: '疫苗接种'
+2025-10-20 11:01:20,532 - src.retrieval.similarity - INFO - 未找到满足阈值的相似文档
+2025-10-20 11:01:20,532 - src.retrieval.similarity - INFO - 开始检索: '经济发展 政策'
+2025-10-20 11:01:20,533 - src.retrieval.similarity - INFO - 检索完成，找到 10 条结果，耗时 0.0005 秒
+2025-10-20 11:01:20,533 - src.retrieval.similarity - INFO - 开始检索: '北京冬奥会开幕式'
+2025-10-20 11:01:20,534 - src.retrieval.similarity - INFO - 检索完成，找到 10 条结果，耗时 0.0005 秒
+2025-10-20 11:01:20,534 - src.retrieval.similarity - INFO - 开始检索: '人工智能'
+2025-10-20 11:01:20,534 - src.retrieval.similarity - INFO - 检索完成，找到 10 条结果，耗时 0.0005 秒
+2025-10-20 11:01:20,534 - src.retrieval.similarity - INFO - 开始检索: '绿色发展'
+2025-10-20 11:01:20,535 - src.retrieval.similarity - INFO - 检索完成，找到 10 条结果，耗时 0.0005 秒
+2025-10-20 11:01:20,535 - src.retrieval.similarity - INFO - 开始检索: '机器学习算法'
+2025-10-20 11:01:20,535 - src.retrieval.similarity - INFO - 检索完成，找到 10 条结果，耗时 0.0005 秒
+2025-10-20 11:01:20,535 - src.retrieval.similarity - INFO - 开始检索: '数字经济'
+2025-10-20 11:01:20,536 - src.retrieval.similarity - INFO - 检索完成，找到 10 条结果，耗时 0.0007 秒
+2025-10-20 11:01:20,536 - src.retrieval.similarity - INFO - 开始检索: '北京冬奥会开幕式'
+2025-10-20 11:01:20,537 - src.retrieval.similarity - INFO - 检索完成，找到 10 条结果，耗时 0.0006 秒
+2025-10-20 11:01:20,537 - src.evaluation.metrics - INFO - 性能测试进度: 20/20
+2025-10-20 11:01:20,537 - src.evaluation.metrics - INFO - 系统性能评估完成
+2025-10-20 11:01:20,537 - src.evaluation.metrics - INFO - 开始不同配置的基准测试
+2025-10-20 11:01:20,537 - src.retrieval.similarity - INFO - 开始检索: '人工智能技术应用'
+2025-10-20 11:01:20,538 - src.retrieval.similarity - INFO - 检索完成，找到 5 条结果，耗时 0.0006 秒
+2025-10-20 11:01:20,538 - src.retrieval.similarity - INFO - 开始检索: '人工智能技术应用'
+2025-10-20 11:01:20,538 - src.retrieval.similarity - INFO - 检索完成，找到 5 条结果，耗时 0.0005 秒
+2025-10-20 11:01:20,538 - src.retrieval.similarity - INFO - 开始检索: '人工智能技术应用'
+2025-10-20 11:01:20,539 - src.retrieval.similarity - INFO - 检索完成，找到 5 条结果，耗时 0.0006 秒
+2025-10-20 11:01:20,539 - src.retrieval.similarity - INFO - 开始检索: '人工智能技术应用'
+2025-10-20 11:01:20,539 - src.retrieval.similarity - INFO - 检索完成，找到 5 条结果，耗时 0.0005 秒
+2025-10-20 11:01:20,539 - src.retrieval.similarity - INFO - 开始检索: '人工智能技术应用'
+2025-10-20 11:01:20,540 - src.retrieval.similarity - INFO - 检索完成，找到 5 条结果，耗时 0.0005 秒
+2025-10-20 11:01:20,540 - src.retrieval.similarity - INFO - 开始检索: '人工智能技术应用'
+2025-10-20 11:01:20,541 - src.retrieval.similarity - INFO - 检索完成，找到 5 条结果，耗时 0.0005 秒
+2025-10-20 11:01:20,541 - src.retrieval.similarity - INFO - 开始检索: '人工智能技术应用'
+2025-10-20 11:01:20,541 - src.retrieval.similarity - INFO - 检索完成，找到 5 条结果，耗时 0.0005 秒
+2025-10-20 11:01:20,541 - src.retrieval.similarity - INFO - 开始检索: '人工智能技术应用'
+2025-10-20 11:01:20,542 - src.retrieval.similarity - INFO - 检索完成，找到 5 条结果，耗时 0.0005 秒
+2025-10-20 11:01:20,542 - src.retrieval.similarity - INFO - 开始检索: '人工智能技术应用'
+2025-10-20 11:01:20,542 - src.retrieval.similarity - INFO - 检索完成，找到 5 条结果，耗时 0.0005 秒
+2025-10-20 11:01:20,542 - src.retrieval.similarity - INFO - 开始检索: '人工智能技术应用'
+2025-10-20 11:01:20,543 - src.retrieval.similarity - INFO - 检索完成，找到 5 条结果，耗时 0.0005 秒
+2025-10-20 11:01:20,543 - src.retrieval.similarity - INFO - 开始检索: '人工智能技术应用'
+2025-10-20 11:01:20,543 - src.retrieval.similarity - INFO - 检索完成，找到 10 条结果，耗时 0.0005 秒
+2025-10-20 11:01:20,543 - src.retrieval.similarity - INFO - 开始检索: '人工智能技术应用'
+2025-10-20 11:01:20,544 - src.retrieval.similarity - INFO - 检索完成，找到 10 条结果，耗时 0.0005 秒
+2025-10-20 11:01:20,544 - src.retrieval.similarity - INFO - 开始检索: '人工智能技术应用'
+2025-10-20 11:01:20,544 - src.retrieval.similarity - INFO - 检索完成，找到 10 条结果，耗时 0.0006 秒
+2025-10-20 11:01:20,545 - src.retrieval.similarity - INFO - 开始检索: '人工智能技术应用'
+2025-10-20 11:01:20,545 - src.retrieval.similarity - INFO - 检索完成，找到 10 条结果，耗时 0.0005 秒
+2025-10-20 11:01:20,545 - src.retrieval.similarity - INFO - 开始检索: '人工智能技术应用'
+2025-10-20 11:01:20,546 - src.retrieval.similarity - INFO - 检索完成，找到 10 条结果，耗时 0.0005 秒
+2025-10-20 11:01:20,546 - src.retrieval.similarity - INFO - 开始检索: '人工智能技术应用'
+2025-10-20 11:01:20,546 - src.retrieval.similarity - INFO - 检索完成，找到 10 条结果，耗时 0.0005 秒
+2025-10-20 11:01:20,546 - src.retrieval.similarity - INFO - 开始检索: '人工智能技术应用'
+2025-10-20 11:01:20,547 - src.retrieval.similarity - INFO - 检索完成，找到 10 条结果，耗时 0.0005 秒
+2025-10-20 11:01:20,547 - src.retrieval.similarity - INFO - 开始检索: '人工智能技术应用'
+2025-10-20 11:01:20,547 - src.retrieval.similarity - INFO - 检索完成，找到 10 条结果，耗时 0.0005 秒
+2025-10-20 11:01:20,547 - src.retrieval.similarity - INFO - 开始检索: '人工智能技术应用'
+2025-10-20 11:01:20,548 - src.retrieval.similarity - INFO - 检索完成，找到 10 条结果，耗时 0.0005 秒
+2025-10-20 11:01:20,548 - src.retrieval.similarity - INFO - 开始检索: '人工智能技术应用'
+2025-10-20 11:01:20,548 - src.retrieval.similarity - INFO - 检索完成，找到 10 条结果，耗时 0.0005 秒
+2025-10-20 11:01:20,549 - src.retrieval.similarity - INFO - 开始检索: '人工智能技术应用'
+2025-10-20 11:01:20,549 - src.retrieval.similarity - INFO - 检索完成，找到 5 条结果，耗时 0.0005 秒
+2025-10-20 11:01:20,549 - src.retrieval.similarity - INFO - 开始检索: '人工智能技术应用'
+2025-10-20 11:01:20,550 - src.retrieval.similarity - INFO - 检索完成，找到 5 条结果，耗时 0.0005 秒
+2025-10-20 11:01:20,550 - src.retrieval.similarity - INFO - 开始检索: '人工智能技术应用'
+2025-10-20 11:01:20,550 - src.retrieval.similarity - INFO - 检索完成，找到 5 条结果，耗时 0.0005 秒
+2025-10-20 11:01:20,550 - src.retrieval.similarity - INFO - 开始检索: '人工智能技术应用'
+2025-10-20 11:01:20,551 - src.retrieval.similarity - INFO - 检索完成，找到 5 条结果，耗时 0.0005 秒
+2025-10-20 11:01:20,551 - src.retrieval.similarity - INFO - 开始检索: '人工智能技术应用'
+2025-10-20 11:01:20,551 - src.retrieval.similarity - INFO - 检索完成，找到 5 条结果，耗时 0.0005 秒
+2025-10-20 11:01:20,551 - src.retrieval.similarity - INFO - 开始检索: '人工智能技术应用'
+2025-10-20 11:01:20,552 - src.retrieval.similarity - INFO - 检索完成，找到 5 条结果，耗时 0.0005 秒
+2025-10-20 11:01:20,552 - src.retrieval.similarity - INFO - 开始检索: '人工智能技术应用'
+2025-10-20 11:01:20,552 - src.retrieval.similarity - INFO - 检索完成，找到 5 条结果，耗时 0.0005 秒
+2025-10-20 11:01:20,552 - src.retrieval.similarity - INFO - 开始检索: '人工智能技术应用'
+2025-10-20 11:01:20,553 - src.retrieval.similarity - INFO - 检索完成，找到 5 条结果，耗时 0.0006 秒
+2025-10-20 11:01:20,553 - src.retrieval.similarity - INFO - 开始检索: '人工智能技术应用'
+2025-10-20 11:01:20,553 - src.retrieval.similarity - INFO - 检索完成，找到 5 条结果，耗时 0.0005 秒
+2025-10-20 11:01:20,553 - src.retrieval.similarity - INFO - 开始检索: '人工智能技术应用'
+2025-10-20 11:01:20,554 - src.retrieval.similarity - INFO - 检索完成，找到 5 条结果，耗时 0.0005 秒
+2025-10-20 11:01:20,554 - src.retrieval.similarity - INFO - 开始检索: '人工智能技术应用'
+2025-10-20 11:01:20,555 - src.retrieval.similarity - INFO - 检索完成，找到 20 条结果，耗时 0.0006 秒
+2025-10-20 11:01:20,555 - src.retrieval.similarity - INFO - 开始检索: '人工智能技术应用'
+2025-10-20 11:01:20,555 - src.retrieval.similarity - INFO - 检索完成，找到 20 条结果，耗时 0.0005 秒
+2025-10-20 11:01:20,555 - src.retrieval.similarity - INFO - 开始检索: '人工智能技术应用'
+2025-10-20 11:01:20,556 - src.retrieval.similarity - INFO - 检索完成，找到 20 条结果，耗时 0.0005 秒
+2025-10-20 11:01:20,556 - src.retrieval.similarity - INFO - 开始检索: '人工智能技术应用'
+2025-10-20 11:01:20,556 - src.retrieval.similarity - INFO - 检索完成，找到 20 条结果，耗时 0.0005 秒
+2025-10-20 11:01:20,556 - src.retrieval.similarity - INFO - 开始检索: '人工智能技术应用'
+2025-10-20 11:01:20,557 - src.retrieval.similarity - INFO - 检索完成，找到 20 条结果，耗时 0.0005 秒
+2025-10-20 11:01:20,557 - src.retrieval.similarity - INFO - 开始检索: '人工智能技术应用'
+2025-10-20 11:01:20,557 - src.retrieval.similarity - INFO - 检索完成，找到 20 条结果，耗时 0.0005 秒
+2025-10-20 11:01:20,557 - src.retrieval.similarity - INFO - 开始检索: '人工智能技术应用'
+2025-10-20 11:01:20,558 - src.retrieval.similarity - INFO - 检索完成，找到 20 条结果，耗时 0.0005 秒
+2025-10-20 11:01:20,558 - src.retrieval.similarity - INFO - 开始检索: '人工智能技术应用'
+2025-10-20 11:01:20,558 - src.retrieval.similarity - INFO - 检索完成，找到 20 条结果，耗时 0.0005 秒
+2025-10-20 11:01:20,558 - src.retrieval.similarity - INFO - 开始检索: '人工智能技术应用'
+2025-10-20 11:01:20,559 - src.retrieval.similarity - INFO - 检索完成，找到 20 条结果，耗时 0.0005 秒
+2025-10-20 11:01:20,559 - src.retrieval.similarity - INFO - 开始检索: '人工智能技术应用'
+2025-10-20 11:01:20,560 - src.retrieval.similarity - INFO - 检索完成，找到 20 条结果，耗时 0.0005 秒
+2025-10-20 11:01:20,560 - src.evaluation.metrics - INFO - 开始生成评估报告
+2025-10-20 11:01:20,560 - src.evaluation.metrics - INFO - 开始评估检索质量，测试查询数量: 10
+2025-10-20 11:01:20,560 - src.evaluation.metrics - INFO - 评估查询: '人工智能' (单词查询)
+2025-10-20 11:01:20,560 - src.retrieval.similarity - INFO - 开始检索: '人工智能'
+2025-10-20 11:01:20,560 - src.retrieval.similarity - INFO - 检索完成，找到 10 条结果，耗时 0.0005 秒
+2025-10-20 11:01:20,560 - src.evaluation.metrics - INFO - 评估查询: '新冠疫情防控' (短语查询)
+2025-10-20 11:01:20,560 - src.retrieval.similarity - INFO - 开始检索: '新冠疫情防控'
+2025-10-20 11:01:20,561 - src.retrieval.similarity - INFO - 未找到满足阈值的相似文档
+2025-10-20 11:01:20,561 - src.evaluation.metrics - INFO - 评估查询: '经济发展 政策' (多词查询)
+2025-10-20 11:01:20,561 - src.retrieval.similarity - INFO - 开始检索: '经济发展 政策'
+2025-10-20 11:01:20,562 - src.retrieval.similarity - INFO - 检索完成，找到 10 条结果，耗时 0.0005 秒
+2025-10-20 11:01:20,562 - src.evaluation.metrics - INFO - 评估查询: '北京冬奥会开幕式' (实体查询)
+2025-10-20 11:01:20,562 - src.retrieval.similarity - INFO - 开始检索: '北京冬奥会开幕式'
+2025-10-20 11:01:20,562 - src.retrieval.similarity - INFO - 检索完成，找到 10 条结果，耗时 0.0005 秒
+2025-10-20 11:01:20,562 - src.evaluation.metrics - INFO - 评估查询: '碳达峰碳中和目标' (复合概念查询)
+2025-10-20 11:01:20,562 - src.retrieval.similarity - INFO - 开始检索: '碳达峰碳中和目标'
+2025-10-20 11:01:20,563 - src.retrieval.similarity - INFO - 未找到满足阈值的相似文档
+2025-10-20 11:01:20,563 - src.evaluation.metrics - INFO - 评估查询: '机器学习算法' (技术词汇查询)
+2025-10-20 11:01:20,563 - src.retrieval.similarity - INFO - 开始检索: '机器学习算法'
+2025-10-20 11:01:20,564 - src.retrieval.similarity - INFO - 检索完成，找到 10 条结果，耗时 0.0005 秒
+2025-10-20 11:01:20,564 - src.evaluation.metrics - INFO - 评估查询: '疫苗接种' (热点话题查询)
+2025-10-20 11:01:20,564 - src.retrieval.similarity - INFO - 开始检索: '疫苗接种'
+2025-10-20 11:01:20,564 - src.retrieval.similarity - INFO - 未找到满足阈值的相似文档
+2025-10-20 11:01:20,564 - src.evaluation.metrics - INFO - 评估查询: '绿色发展' (政策概念查询)
+2025-10-20 11:01:20,564 - src.retrieval.similarity - INFO - 开始检索: '绿色发展'
+2025-10-20 11:01:20,565 - src.retrieval.similarity - INFO - 检索完成，找到 10 条结果，耗时 0.0005 秒
+2025-10-20 11:01:20,565 - src.evaluation.metrics - INFO - 评估查询: '数字经济' (经济概念查询)
+2025-10-20 11:01:20,565 - src.retrieval.similarity - INFO - 开始检索: '数字经济'
+2025-10-20 11:01:20,566 - src.retrieval.similarity - INFO - 检索完成，找到 10 条结果，耗时 0.0005 秒
+2025-10-20 11:01:20,566 - src.evaluation.metrics - INFO - 评估查询: '智能制造' (产业概念查询)
+2025-10-20 11:01:20,566 - src.retrieval.similarity - INFO - 开始检索: '智能制造'
+2025-10-20 11:01:20,566 - src.retrieval.similarity - INFO - 检索完成，找到 10 条结果，耗时 0.0005 秒
+2025-10-20 11:01:20,566 - src.evaluation.metrics - INFO - 检索质量评估完成
+2025-10-20 11:01:20,566 - src.evaluation.metrics - INFO - 开始系统性能评估，迭代次数: 50
+2025-10-20 11:01:20,566 - src.retrieval.similarity - INFO - 开始检索: '智能制造'
+2025-10-20 11:01:20,567 - src.retrieval.similarity - INFO - 检索完成，找到 10 条结果，耗时 0.0005 秒
+2025-10-20 11:01:20,567 - src.retrieval.similarity - INFO - 开始检索: '新冠疫情防控'
+2025-10-20 11:01:20,567 - src.retrieval.similarity - INFO - 未找到满足阈值的相似文档
+2025-10-20 11:01:20,568 - src.retrieval.similarity - INFO - 开始检索: '北京冬奥会开幕式'
+2025-10-20 11:01:20,568 - src.retrieval.similarity - INFO - 检索完成，找到 10 条结果，耗时 0.0005 秒
+2025-10-20 11:01:20,568 - src.retrieval.similarity - INFO - 开始检索: '机器学习算法'
+2025-10-20 11:01:20,569 - src.retrieval.similarity - INFO - 检索完成，找到 10 条结果，耗时 0.0005 秒
+2025-10-20 11:01:20,569 - src.retrieval.similarity - INFO - 开始检索: '经济发展 政策'
+2025-10-20 11:01:20,569 - src.retrieval.similarity - INFO - 检索完成，找到 10 条结果，耗时 0.0005 秒
+2025-10-20 11:01:20,569 - src.retrieval.similarity - INFO - 开始检索: '经济发展 政策'
+2025-10-20 11:01:20,570 - src.retrieval.similarity - INFO - 检索完成，找到 10 条结果，耗时 0.0007 秒
+2025-10-20 11:01:20,570 - src.retrieval.similarity - INFO - 开始检索: '新冠疫情防控'
+2025-10-20 11:01:20,571 - src.retrieval.similarity - INFO - 未找到满足阈值的相似文档
+2025-10-20 11:01:20,571 - src.retrieval.similarity - INFO - 开始检索: '新冠疫情防控'
+2025-10-20 11:01:20,571 - src.retrieval.similarity - INFO - 未找到满足阈值的相似文档
+2025-10-20 11:01:20,571 - src.retrieval.similarity - INFO - 开始检索: '碳达峰碳中和目标'
+2025-10-20 11:01:20,572 - src.retrieval.similarity - INFO - 未找到满足阈值的相似文档
+2025-10-20 11:01:20,572 - src.retrieval.similarity - INFO - 开始检索: '数字经济'
+2025-10-20 11:01:20,573 - src.retrieval.similarity - INFO - 检索完成，找到 10 条结果，耗时 0.0005 秒
+2025-10-20 11:01:20,573 - src.retrieval.similarity - INFO - 开始检索: '经济发展 政策'
+2025-10-20 11:01:20,573 - src.retrieval.similarity - INFO - 检索完成，找到 10 条结果，耗时 0.0005 秒
+2025-10-20 11:01:20,573 - src.retrieval.similarity - INFO - 开始检索: '新冠疫情防控'
+2025-10-20 11:01:20,574 - src.retrieval.similarity - INFO - 未找到满足阈值的相似文档
+2025-10-20 11:01:20,574 - src.retrieval.similarity - INFO - 开始检索: '智能制造'
+2025-10-20 11:01:20,574 - src.retrieval.similarity - INFO - 检索完成，找到 10 条结果，耗时 0.0005 秒
+2025-10-20 11:01:20,574 - src.retrieval.similarity - INFO - 开始检索: '碳达峰碳中和目标'
+2025-10-20 11:01:20,575 - src.retrieval.similarity - INFO - 未找到满足阈值的相似文档
+2025-10-20 11:01:20,575 - src.retrieval.similarity - INFO - 开始检索: '碳达峰碳中和目标'
+2025-10-20 11:01:20,576 - src.retrieval.similarity - INFO - 未找到满足阈值的相似文档
+2025-10-20 11:01:20,576 - src.retrieval.similarity - INFO - 开始检索: '疫苗接种'
+2025-10-20 11:01:20,576 - src.retrieval.similarity - INFO - 未找到满足阈值的相似文档
+2025-10-20 11:01:20,576 - src.retrieval.similarity - INFO - 开始检索: '数字经济'
+2025-10-20 11:01:20,577 - src.retrieval.similarity - INFO - 检索完成，找到 10 条结果，耗时 0.0005 秒
+2025-10-20 11:01:20,577 - src.retrieval.similarity - INFO - 开始检索: '机器学习算法'
+2025-10-20 11:01:20,577 - src.retrieval.similarity - INFO - 检索完成，找到 10 条结果，耗时 0.0005 秒
+2025-10-20 11:01:20,577 - src.retrieval.similarity - INFO - 开始检索: '碳达峰碳中和目标'
+2025-10-20 11:01:20,578 - src.retrieval.similarity - INFO - 未找到满足阈值的相似文档
+2025-10-20 11:01:20,578 - src.retrieval.similarity - INFO - 开始检索: '机器学习算法'
+2025-10-20 11:01:20,579 - src.retrieval.similarity - INFO - 检索完成，找到 10 条结果，耗时 0.0005 秒
+2025-10-20 11:01:20,579 - src.evaluation.metrics - INFO - 性能测试进度: 20/50
+2025-10-20 11:01:20,579 - src.retrieval.similarity - INFO - 开始检索: '碳达峰碳中和目标'
+2025-10-20 11:01:20,579 - src.retrieval.similarity - INFO - 未找到满足阈值的相似文档
+2025-10-20 11:01:20,579 - src.retrieval.similarity - INFO - 开始检索: '疫苗接种'
+2025-10-20 11:01:20,580 - src.retrieval.similarity - INFO - 未找到满足阈值的相似文档
+2025-10-20 11:01:20,580 - src.retrieval.similarity - INFO - 开始检索: '疫苗接种'
+2025-10-20 11:01:20,580 - src.retrieval.similarity - INFO - 未找到满足阈值的相似文档
+2025-10-20 11:01:20,580 - src.retrieval.similarity - INFO - 开始检索: '经济发展 政策'
+2025-10-20 11:01:20,581 - src.retrieval.similarity - INFO - 检索完成，找到 10 条结果，耗时 0.0006 秒
+2025-10-20 11:01:20,581 - src.retrieval.similarity - INFO - 开始检索: '疫苗接种'
+2025-10-20 11:01:20,582 - src.retrieval.similarity - INFO - 未找到满足阈值的相似文档
+2025-10-20 11:01:20,582 - src.retrieval.similarity - INFO - 开始检索: '新冠疫情防控'
+2025-10-20 11:01:20,582 - src.retrieval.similarity - INFO - 未找到满足阈值的相似文档
+2025-10-20 11:01:20,582 - src.retrieval.similarity - INFO - 开始检索: '碳达峰碳中和目标'
+2025-10-20 11:01:20,583 - src.retrieval.similarity - INFO - 未找到满足阈值的相似文档
+2025-10-20 11:01:20,583 - src.retrieval.similarity - INFO - 开始检索: '新冠疫情防控'
+2025-10-20 11:01:20,583 - src.retrieval.similarity - INFO - 未找到满足阈值的相似文档
+2025-10-20 11:01:20,583 - src.retrieval.similarity - INFO - 开始检索: '疫苗接种'
+2025-10-20 11:01:20,584 - src.retrieval.similarity - INFO - 未找到满足阈值的相似文档
+2025-10-20 11:01:20,584 - src.retrieval.similarity - INFO - 开始检索: '机器学习算法'
+2025-10-20 11:01:20,584 - src.retrieval.similarity - INFO - 检索完成，找到 10 条结果，耗时 0.0005 秒
+2025-10-20 11:01:20,584 - src.retrieval.similarity - INFO - 开始检索: '经济发展 政策'
+2025-10-20 11:01:20,585 - src.retrieval.similarity - INFO - 检索完成，找到 10 条结果，耗时 0.0005 秒
+2025-10-20 11:01:20,585 - src.retrieval.similarity - INFO - 开始检索: '新冠疫情防控'
+2025-10-20 11:01:20,585 - src.retrieval.similarity - INFO - 未找到满足阈值的相似文档
+2025-10-20 11:01:20,585 - src.retrieval.similarity - INFO - 开始检索: '绿色发展'
+2025-10-20 11:01:20,586 - src.retrieval.similarity - INFO - 检索完成，找到 10 条结果，耗时 0.0008 秒
+2025-10-20 11:01:20,586 - src.retrieval.similarity - INFO - 开始检索: '人工智能'
+2025-10-20 11:01:20,587 - src.retrieval.similarity - INFO - 检索完成，找到 10 条结果，耗时 0.0005 秒
+2025-10-20 11:01:20,587 - src.retrieval.similarity - INFO - 开始检索: '新冠疫情防控'
+2025-10-20 11:01:20,587 - src.retrieval.similarity - INFO - 未找到满足阈值的相似文档
+2025-10-20 11:01:20,587 - src.retrieval.similarity - INFO - 开始检索: '新冠疫情防控'
+2025-10-20 11:01:20,588 - src.retrieval.similarity - INFO - 未找到满足阈值的相似文档
+2025-10-20 11:01:20,588 - src.retrieval.similarity - INFO - 开始检索: '新冠疫情防控'
+2025-10-20 11:01:20,589 - src.retrieval.similarity - INFO - 未找到满足阈值的相似文档
+2025-10-20 11:01:20,589 - src.retrieval.similarity - INFO - 开始检索: '疫苗接种'
+2025-10-20 11:01:20,589 - src.retrieval.similarity - INFO - 未找到满足阈值的相似文档
+2025-10-20 11:01:20,589 - src.retrieval.similarity - INFO - 开始检索: '数字经济'
+2025-10-20 11:01:20,590 - src.retrieval.similarity - INFO - 检索完成，找到 10 条结果，耗时 0.0005 秒
+2025-10-20 11:01:20,590 - src.retrieval.similarity - INFO - 开始检索: '数字经济'
+2025-10-20 11:01:20,590 - src.retrieval.similarity - INFO - 检索完成，找到 10 条结果，耗时 0.0005 秒
+2025-10-20 11:01:20,590 - src.evaluation.metrics - INFO - 性能测试进度: 40/50
+2025-10-20 11:01:20,590 - src.retrieval.similarity - INFO - 开始检索: '数字经济'
+2025-10-20 11:01:20,591 - src.retrieval.similarity - INFO - 检索完成，找到 10 条结果，耗时 0.0006 秒
+2025-10-20 11:01:20,591 - src.retrieval.similarity - INFO - 开始检索: '新冠疫情防控'
+2025-10-20 11:01:20,591 - src.retrieval.similarity - INFO - 未找到满足阈值的相似文档
+2025-10-20 11:01:20,591 - src.retrieval.similarity - INFO - 开始检索: '绿色发展'
+2025-10-20 11:01:20,592 - src.retrieval.similarity - INFO - 检索完成，找到 10 条结果，耗时 0.0005 秒
+2025-10-20 11:01:20,592 - src.retrieval.similarity - INFO - 开始检索: '疫苗接种'
+2025-10-20 11:01:20,592 - src.retrieval.similarity - INFO - 未找到满足阈值的相似文档
+2025-10-20 11:01:20,593 - src.retrieval.similarity - INFO - 开始检索: '疫苗接种'
+2025-10-20 11:01:20,593 - src.retrieval.similarity - INFO - 未找到满足阈值的相似文档
+2025-10-20 11:01:20,593 - src.retrieval.similarity - INFO - 开始检索: '新冠疫情防控'
+2025-10-20 11:01:20,594 - src.retrieval.similarity - INFO - 未找到满足阈值的相似文档
+2025-10-20 11:01:20,594 - src.retrieval.similarity - INFO - 开始检索: '疫苗接种'
+2025-10-20 11:01:20,594 - src.retrieval.similarity - INFO - 未找到满足阈值的相似文档
+2025-10-20 11:01:20,594 - src.retrieval.similarity - INFO - 开始检索: '疫苗接种'
+2025-10-20 11:01:20,595 - src.retrieval.similarity - INFO - 未找到满足阈值的相似文档
+2025-10-20 11:01:20,595 - src.retrieval.similarity - INFO - 开始检索: '人工智能'
+2025-10-20 11:01:20,595 - src.retrieval.similarity - INFO - 检索完成，找到 10 条结果，耗时 0.0005 秒
+2025-10-20 11:01:20,595 - src.retrieval.similarity - INFO - 开始检索: '经济发展 政策'
+2025-10-20 11:01:20,596 - src.retrieval.similarity - INFO - 检索完成，找到 10 条结果，耗时 0.0006 秒
+2025-10-20 11:01:20,596 - src.evaluation.metrics - INFO - 系统性能评估完成
+2025-10-20 11:01:20,596 - src.evaluation.metrics - INFO - 开始不同配置的基准测试
+2025-10-20 11:01:20,596 - src.retrieval.similarity - INFO - 开始检索: '人工智能技术应用'
+2025-10-20 11:01:20,597 - src.retrieval.similarity - INFO - 检索完成，找到 5 条结果，耗时 0.0005 秒
+2025-10-20 11:01:20,597 - src.retrieval.similarity - INFO - 开始检索: '人工智能技术应用'
+2025-10-20 11:01:20,597 - src.retrieval.similarity - INFO - 检索完成，找到 5 条结果，耗时 0.0005 秒
+2025-10-20 11:01:20,597 - src.retrieval.similarity - INFO - 开始检索: '人工智能技术应用'
+2025-10-20 11:01:20,598 - src.retrieval.similarity - INFO - 检索完成，找到 5 条结果，耗时 0.0005 秒
+2025-10-20 11:01:20,598 - src.retrieval.similarity - INFO - 开始检索: '人工智能技术应用'
+2025-10-20 11:01:20,598 - src.retrieval.similarity - INFO - 检索完成，找到 5 条结果，耗时 0.0005 秒
+2025-10-20 11:01:20,598 - src.retrieval.similarity - INFO - 开始检索: '人工智能技术应用'
+2025-10-20 11:01:20,599 - src.retrieval.similarity - INFO - 检索完成，找到 5 条结果，耗时 0.0005 秒
+2025-10-20 11:01:20,599 - src.retrieval.similarity - INFO - 开始检索: '人工智能技术应用'
+2025-10-20 11:01:20,599 - src.retrieval.similarity - INFO - 检索完成，找到 5 条结果，耗时 0.0005 秒
+2025-10-20 11:01:20,599 - src.retrieval.similarity - INFO - 开始检索: '人工智能技术应用'
+2025-10-20 11:01:20,600 - src.retrieval.similarity - INFO - 检索完成，找到 5 条结果，耗时 0.0005 秒
+2025-10-20 11:01:20,600 - src.retrieval.similarity - INFO - 开始检索: '人工智能技术应用'
+2025-10-20 11:01:20,601 - src.retrieval.similarity - INFO - 检索完成，找到 5 条结果，耗时 0.0005 秒
+2025-10-20 11:01:20,601 - src.retrieval.similarity - INFO - 开始检索: '人工智能技术应用'
+2025-10-20 11:01:20,601 - src.retrieval.similarity - INFO - 检索完成，找到 5 条结果，耗时 0.0005 秒
+2025-10-20 11:01:20,601 - src.retrieval.similarity - INFO - 开始检索: '人工智能技术应用'
+2025-10-20 11:01:20,602 - src.retrieval.similarity - INFO - 检索完成，找到 5 条结果，耗时 0.0005 秒
+2025-10-20 11:01:20,602 - src.retrieval.similarity - INFO - 开始检索: '人工智能技术应用'
+2025-10-20 11:01:20,602 - src.retrieval.similarity - INFO - 检索完成，找到 10 条结果，耗时 0.0005 秒
+2025-10-20 11:01:20,602 - src.retrieval.similarity - INFO - 开始检索: '人工智能技术应用'
+2025-10-20 11:01:20,603 - src.retrieval.similarity - INFO - 检索完成，找到 10 条结果，耗时 0.0006 秒
+2025-10-20 11:01:20,603 - src.retrieval.similarity - INFO - 开始检索: '人工智能技术应用'
+2025-10-20 11:01:20,603 - src.retrieval.similarity - INFO - 检索完成，找到 10 条结果，耗时 0.0005 秒
+2025-10-20 11:01:20,603 - src.retrieval.similarity - INFO - 开始检索: '人工智能技术应用'
+2025-10-20 11:01:20,604 - src.retrieval.similarity - INFO - 检索完成，找到 10 条结果，耗时 0.0005 秒
+2025-10-20 11:01:20,604 - src.retrieval.similarity - INFO - 开始检索: '人工智能技术应用'
+2025-10-20 11:01:20,605 - src.retrieval.similarity - INFO - 检索完成，找到 10 条结果，耗时 0.0006 秒
+2025-10-20 11:01:20,605 - src.retrieval.similarity - INFO - 开始检索: '人工智能技术应用'
+2025-10-20 11:01:20,605 - src.retrieval.similarity - INFO - 检索完成，找到 10 条结果，耗时 0.0005 秒
+2025-10-20 11:01:20,605 - src.retrieval.similarity - INFO - 开始检索: '人工智能技术应用'
+2025-10-20 11:01:20,606 - src.retrieval.similarity - INFO - 检索完成，找到 10 条结果，耗时 0.0006 秒
+2025-10-20 11:01:20,606 - src.retrieval.similarity - INFO - 开始检索: '人工智能技术应用'
+2025-10-20 11:01:20,606 - src.retrieval.similarity - INFO - 检索完成，找到 10 条结果，耗时 0.0005 秒
+2025-10-20 11:01:20,606 - src.retrieval.similarity - INFO - 开始检索: '人工智能技术应用'
+2025-10-20 11:01:20,607 - src.retrieval.similarity - INFO - 检索完成，找到 10 条结果，耗时 0.0005 秒
+2025-10-20 11:01:20,607 - src.retrieval.similarity - INFO - 开始检索: '人工智能技术应用'
+2025-10-20 11:01:20,607 - src.retrieval.similarity - INFO - 检索完成，找到 10 条结果，耗时 0.0005 秒
+2025-10-20 11:01:20,608 - src.retrieval.similarity - INFO - 开始检索: '人工智能技术应用'
+2025-10-20 11:01:20,608 - src.retrieval.similarity - INFO - 检索完成，找到 5 条结果，耗时 0.0005 秒
+2025-10-20 11:01:20,608 - src.retrieval.similarity - INFO - 开始检索: '人工智能技术应用'
+2025-10-20 11:01:20,608 - src.retrieval.similarity - INFO - 检索完成，找到 5 条结果，耗时 0.0004 秒
+2025-10-20 11:01:20,609 - src.retrieval.similarity - INFO - 开始检索: '人工智能技术应用'
+2025-10-20 11:01:20,609 - src.retrieval.similarity - INFO - 检索完成，找到 5 条结果，耗时 0.0005 秒
+2025-10-20 11:01:20,609 - src.retrieval.similarity - INFO - 开始检索: '人工智能技术应用'
+2025-10-20 11:01:20,610 - src.retrieval.similarity - INFO - 检索完成，找到 5 条结果，耗时 0.0005 秒
+2025-10-20 11:01:20,610 - src.retrieval.similarity - INFO - 开始检索: '人工智能技术应用'
+2025-10-20 11:01:20,610 - src.retrieval.similarity - INFO - 检索完成，找到 5 条结果，耗时 0.0004 秒
+2025-10-20 11:01:20,610 - src.retrieval.similarity - INFO - 开始检索: '人工智能技术应用'
+2025-10-20 11:01:20,611 - src.retrieval.similarity - INFO - 检索完成，找到 5 条结果，耗时 0.0006 秒
+2025-10-20 11:01:20,611 - src.retrieval.similarity - INFO - 开始检索: '人工智能技术应用'
+2025-10-20 11:01:20,611 - src.retrieval.similarity - INFO - 检索完成，找到 5 条结果，耗时 0.0007 秒
+2025-10-20 11:01:20,612 - src.retrieval.similarity - INFO - 开始检索: '人工智能技术应用'
+2025-10-20 11:01:20,612 - src.retrieval.similarity - INFO - 检索完成，找到 5 条结果，耗时 0.0005 秒
+2025-10-20 11:01:20,612 - src.retrieval.similarity - INFO - 开始检索: '人工智能技术应用'
+2025-10-20 11:01:20,613 - src.retrieval.similarity - INFO - 检索完成，找到 5 条结果，耗时 0.0005 秒
+2025-10-20 11:01:20,613 - src.retrieval.similarity - INFO - 开始检索: '人工智能技术应用'
+2025-10-20 11:01:20,613 - src.retrieval.similarity - INFO - 检索完成，找到 5 条结果，耗时 0.0005 秒
+2025-10-20 11:01:20,613 - src.retrieval.similarity - INFO - 开始检索: '人工智能技术应用'
+2025-10-20 11:01:20,614 - src.retrieval.similarity - INFO - 检索完成，找到 20 条结果，耗时 0.0005 秒
+2025-10-20 11:01:20,614 - src.retrieval.similarity - INFO - 开始检索: '人工智能技术应用'
+2025-10-20 11:01:20,614 - src.retrieval.similarity - INFO - 检索完成，找到 20 条结果，耗时 0.0005 秒
+2025-10-20 11:01:20,614 - src.retrieval.similarity - INFO - 开始检索: '人工智能技术应用'
+2025-10-20 11:01:20,615 - src.retrieval.similarity - INFO - 检索完成，找到 20 条结果，耗时 0.0005 秒
+2025-10-20 11:01:20,615 - src.retrieval.similarity - INFO - 开始检索: '人工智能技术应用'
+2025-10-20 11:01:20,615 - src.retrieval.similarity - INFO - 检索完成，找到 20 条结果，耗时 0.0005 秒
+2025-10-20 11:01:20,615 - src.retrieval.similarity - INFO - 开始检索: '人工智能技术应用'
+2025-10-20 11:01:20,616 - src.retrieval.similarity - INFO - 检索完成，找到 20 条结果，耗时 0.0005 秒
+2025-10-20 11:01:20,616 - src.retrieval.similarity - INFO - 开始检索: '人工智能技术应用'
+2025-10-20 11:01:20,617 - src.retrieval.similarity - INFO - 检索完成，找到 20 条结果，耗时 0.0006 秒
+2025-10-20 11:01:20,617 - src.retrieval.similarity - INFO - 开始检索: '人工智能技术应用'
+2025-10-20 11:01:20,617 - src.retrieval.similarity - INFO - 检索完成，找到 20 条结果，耗时 0.0005 秒
+2025-10-20 11:01:20,617 - src.retrieval.similarity - INFO - 开始检索: '人工智能技术应用'
+2025-10-20 11:01:20,618 - src.retrieval.similarity - INFO - 检索完成，找到 20 条结果，耗时 0.0005 秒
+2025-10-20 11:01:20,618 - src.retrieval.similarity - INFO - 开始检索: '人工智能技术应用'
+2025-10-20 11:01:20,618 - src.retrieval.similarity - INFO - 检索完成，找到 20 条结果，耗时 0.0005 秒
+2025-10-20 11:01:20,618 - src.retrieval.similarity - INFO - 开始检索: '人工智能技术应用'
+2025-10-20 11:01:20,619 - src.retrieval.similarity - INFO - 检索完成，找到 20 条结果，耗时 0.0005 秒
+2025-10-20 11:01:20,620 - src.evaluation.metrics - INFO - 评估报告已生成: data/analysis/evaluation_report_1760929280.json
