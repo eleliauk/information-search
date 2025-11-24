@@ -31,33 +31,33 @@
 
 \section{实验目的和要求}
 \begin{itemize}
-    \item 掌握中文分词的基本原理和结巴分词算法的使用方法。
-    \item 理解TF-IDF向量化算法和余弦相似度检索的原理及实现。
-    \item 建立完整的中文新闻稀疏检索系统原型，包括数据收集、预处理、索引构建和检索功能。
-    \item 分析系统的检索性能和数据质量，评估不同配置下的检索效果。
+    \item 掌握倒排索引的基本原理和数据结构设计方法。
+    \item 理解布尔检索模型的原理，实现AND、OR、NOT等布尔运算。
+    \item 建立完整的倒排索引系统原型，包括文档管理、索引构建、查询处理和持久化功能。
+    \item 分析系统的检索性能和索引效率，评估不同查询类型的响应时间。
 \end{itemize}
 
 \section{问题描述}
     \begin{itemize}
-        \item （1）设计并实现一个基于结巴分词的中文新闻检索系统，支持500篇新闻文档的语义检索；
-        \item （2）对收集的新闻数据进行全面的统计分析，包括文本长度分布、分类分布、内容质量等；
-        \item （3）实现优化的中文分词算法，分析分词效果和词汇统计特征；
-        \item （4）基于TF-IDF算法构建文档向量索引，实现余弦相似度检索功能。
+        \item （1）设计并实现一个基于倒排索引的中文文档检索系统，支持高效的文档索引和查询；
+        \item （2）实现文档存储模块，支持文档的添加、检索和元数据管理；
+        \item （3）实现文本预处理模块，包括中文分词、停用词过滤和文本规范化；
+        \item （4）构建倒排索引数据结构，记录词项位置信息，支持布尔查询和索引持久化。
     \end{itemize}
 
 \section{实验要求}
     \begin{itemize}
-        \item 使用结巴分词库进行中文文本分词，并优化分词效果；
-        \item 实现TF-IDF向量化算法，包括词频计算、逆文档频率计算和向量归一化；
-        \item 设计基于余弦相似度的检索算法，支持查询预处理和结果排序；
-        \item 对系统进行全面的性能评估和质量分析。
+        \item 使用结巴分词库进行中文文本分词，实现停用词过滤和文本规范化；
+        \item 设计倒排索引数据结构，支持词项到文档的高效映射和位置信息记录；
+        \item 实现布尔查询处理器，支持AND、OR、NOT运算符及其组合查询；
+        \item 实现索引持久化功能，支持索引的保存和加载，对系统进行性能测试。
     \end{itemize}
 
 \section{实验环境}
     \begin{itemize}
         \item 开发工具：VS Code
         \item 编程语言：Python 3.8+
-        \item 主要依赖库：jieba、scikit-learn、numpy、scipy、pandas
+        \item 主要依赖库：jieba（中文分词）、pytest（测试框架）
         \item 操作系统：macOS 
     \end{itemize}
 
@@ -65,470 +65,434 @@
 （包括实验设计原理，分析方法、计算步骤、模块组织，或主要流程图、伪代码等）
 
 \subsection{实验设计原理}
-本实验基于稀疏检索模型构建中文新闻检索系统，核心思想是将文本转换为高维稀疏向量空间，通过计算向量间的余弦相似度实现语义检索。系统采用TF-IDF算法进行文本向量化，结合结巴分词进行中文文本预处理，最终实现高效的文档检索功能。
+本实验基于倒排索引（Inverted Index）数据结构构建中文文档检索系统。倒排索引是信息检索系统的核心数据结构，通过建立词项到文档的映射关系，实现快速的文档查找。系统采用布尔检索模型，支持AND、OR、NOT等逻辑运算，结合结巴分词进行中文文本预处理，最终实现高效的文档检索功能。
 
 \subsection{系统架构设计}
 系统采用模块化设计，主要包含以下核心模块：
 \begin{itemize}
-    \item \textbf{数据收集模块}：负责从新闻网站爬取或生成模拟新闻数据
-    \item \textbf{预处理模块}：实现中文分词、停用词过滤、文本清洗等功能
-    \item \textbf{向量化模块}：基于TF-IDF算法将文档转换为稀疏向量
-    \item \textbf{检索模块}：实现余弦相似度计算和结果排序
-    \item \textbf{评估模块}：提供系统性能评估和质量分析功能
+    \item \textbf{文档存储模块}：负责文档的添加、存储和检索，自动分配唯一文档ID
+    \item \textbf{文本预处理模块}：实现中文分词、停用词过滤、文本规范化等功能
+    \item \textbf{倒排索引模块}：构建词项到文档的映射，记录位置信息，支持索引持久化
+    \item \textbf{查询处理模块}：处理单词项查询和布尔查询，实现集合运算和结果排序
+    \item \textbf{系统集成模块}：提供统一的对外接口，协调各组件交互
 \end{itemize}
 
-\subsection{分词算法设计}
-采用结巴分词库进行中文分词，并进行了以下优化：
+\subsection{文本预处理设计}
+采用结巴分词库进行中文分词，实现以下预处理功能：
 \begin{enumerate}
-    \item \textbf{自定义词典}：添加新闻领域专业词汇，提高分词准确性
-    \item \textbf{停用词过滤}：过滤无意义的词汇，减少噪声
-    \item \textbf{词性标注}：保留名词、动词、形容词等重要词性
-    \item \textbf{并行处理}：支持多线程分词，提高处理效率
+    \item \textbf{文本规范化}：将文本转换为小写，移除标点符号
+    \item \textbf{中文分词}：使用jieba分词库进行中文分词处理
+    \item \textbf{停用词过滤}：过滤无意义的词汇，减少索引噪声
+    \item \textbf{一致性处理}：确保文档和查询使用相同的预处理流程
 \end{enumerate}
 
-\subsection{TF-IDF算法实现}
-TF-IDF（Term Frequency-Inverse Document Frequency）算法实现包括：
+\subsection{倒排索引数据结构}
+倒排索引的核心数据结构设计：
 \begin{enumerate}
-    \item \textbf{词频计算}：$tf(t,d) = 1 + \log(count(t,d))$（对数归一化）
-    \item \textbf{逆文档频率}：$idf(t) = \log(N/df(t))$
-    \item \textbf{TF-IDF权重}：$w(t,d) = tf(t,d) \times idf(t)$
-    \item \textbf{向量归一化}：L2归一化确保向量长度为1
+    \item \textbf{索引结构}：$Index: Dict[Term, List[Posting]]$，词项到倒排列表的映射
+    \item \textbf{倒排列表项}：$Posting = (doc\_id, positions, term\_freq)$
+    \item \textbf{位置信息}：记录词项在文档中的所有出现位置
+    \item \textbf{文档长度}：记录每个文档的词项数量，用于统计分析
 \end{enumerate}
 
-\subsection{检索算法设计}
-基于余弦相似度的检索算法：
+\subsection{布尔查询算法设计}
+基于集合运算的布尔查询算法：
 \begin{enumerate}
-    \item \textbf{查询预处理}：对用户查询进行分词和向量化
-    \item \textbf{相似度计算}：$similarity(q,d) = \frac{q \cdot d}{||q|| \times ||d||}$
-    \item \textbf{结果排序}：按相似度降序排列
-    \item \textbf{阈值过滤}：过滤低相似度结果
+    \item \textbf{AND查询}：$Result = D_1 \cap D_2 \cap ... \cap D_n$（交集运算）
+    \item \textbf{OR查询}：$Result = D_1 \cup D_2 \cup ... \cup D_n$（并集运算）
+    \item \textbf{NOT查询}：$Result = D_{include} - D_{exclude}$（差集运算）
+    \item \textbf{运算符优先级}：NOT > AND > OR，支持复杂查询组合
 \end{enumerate}
 
 \subsection{模块组织}
 Python程序采用面向对象设计，主要类包括：
 \begin{itemize}
-    \item \texttt{OptimizedChineseTokenizer}：优化的中文分词器
-    \item \texttt{TFIDFVectorizer}：TF-IDF向量化器
-    \item \texttt{CosineRetrieval}：余弦相似度检索器
-    \item \texttt{ChineseNewsSearchSystem}：主检索系统
-    \item \texttt{RetrievalEvaluator}：系统评估器
+    \item \texttt{Document}：文档数据模型，包含文档ID、内容、元数据等
+    \item \texttt{Posting}：倒排列表项，记录文档ID、位置信息和词频
+    \item \texttt{DocumentStore}：文档存储类，管理文档的添加和检索
+    \item \texttt{TextPreprocessor}：文本预处理器，实现分词和规范化
+    \item \texttt{InvertedIndex}：倒排索引类，构建和维护索引结构
+    \item \texttt{QueryProcessor}：查询处理器，实现单词项查询和布尔查询
+    \item \texttt{IndexSystem}：系统主入口，集成所有组件
 \end{itemize}
 
 \section{实验结果及分析}
 
-\subsection{数据统计分析}
-系统收集了500篇中文新闻文档，进行了全面的数据分析：
+\subsection{系统功能测试}
+系统实现了完整的倒排索引功能，进行了全面的功能测试：
 
-\paragraph{基本统计信息}
+\paragraph{基本功能测试}
 \begin{table}[!htbp]
 \centering
 \begin{tabular}{|c|c|}
 \hline
-\textbf{统计指标} & \textbf{数值} \\
+\textbf{功能模块} & \textbf{测试结果} \\
 \hline
-文章总数 & 500 \\
-总字符数 & 107,368 \\
-平均字符数 & 214.74 \\
-最长文章字符数 & 224 \\
-最短文章字符数 & 206 \\
-字符数标准差 & 5.29 \\
+文档添加 & 通过 \\
+文档检索 & 通过 \\
+中文分词 & 通过 \\
+停用词过滤 & 通过 \\
+倒排索引构建 & 通过 \\
+单词项查询 & 通过 \\
+布尔查询（AND） & 通过 \\
+布尔查询（OR） & 通过 \\
+布尔查询（NOT） & 通过 \\
+索引持久化 & 通过 \\
 \hline
 \end{tabular}
 \end{table}
 
-\paragraph{分类分布}
+\paragraph{测试数据集}
+使用8个示例文档进行测试，涵盖不同主题：
 \begin{table}[!htbp]
 \centering
-\begin{tabular}{|c|c|c|c|}
+\begin{tabular}{|c|c|c|}
 \hline
-\textbf{分类} & \textbf{文章数量} & \textbf{占比} & \textbf{平均字符数} \\
+\textbf{文档ID} & \textbf{标题} & \textbf{分类} \\
 \hline
-科技 & 112 & 22.40\% & 206.8 \\
-娱乐 & 85 & 17.00\% & 215.74 \\
-经济 & 83 & 16.60\% & 216.69 \\
-环保 & 110 & 22.00\% & 221.65 \\
-体育 & 110 & 22.00\% & 213.65 \\
+1 & Python简介 & 编程语言 \\
+2 & Java简介 & 编程语言 \\
+3 & 机器学习概述 & 人工智能 \\
+4 & Python与数据科学 & 数据科学 \\
+5 & 深度学习 & 人工智能 \\
+6 & 自然语言处理 & 人工智能 \\
+7 & 数据结构与算法 & 计算机科学 \\
+8 & 倒排索引 & 信息检索 \\
 \hline
 \end{tabular}
 \end{table}
 
-\subsection{分词统计分析}
-系统对500篇文档进行了分词处理，统计结果如下：
+\subsection{查询功能测试}
+系统对5个测试文档进行了全面的查询功能测试：
 
-\paragraph{基础分词统计}
+\paragraph{单词项查询测试}
+\begin{table}[!htbp]
+\centering
+\begin{tabular}{|c|c|c|}
+\hline
+\textbf{查询词} & \textbf{结果文档数} & \textbf{文档ID列表} \\
+\hline
+Python & 3 & [1, 3, 4] \\
+Java & 1 & [2] \\
+机器学习 & 2 & [3, 4] \\
+编程语言 & 2 & [1, 2] \\
+统计学 & 1 & [5] \\
+\hline
+\end{tabular}
+\end{table}
+
+\paragraph{AND查询测试}
+\begin{table}[!htbp]
+\centering
+\begin{tabular}{|c|c|c|}
+\hline
+\textbf{查询表达式} & \textbf{结果数} & \textbf{文档ID} \\
+\hline
+Python AND 编程语言 & 1 & [1] \\
+Python AND 机器学习 & 2 & [3, 4] \\
+\hline
+\end{tabular}
+\end{table}
+
+\paragraph{OR查询测试}
+\begin{table}[!htbp]
+\centering
+\begin{tabular}{|c|c|c|}
+\hline
+\textbf{查询表达式} & \textbf{结果数} & \textbf{文档ID} \\
+\hline
+Java OR 统计学 & 2 & [2, 5] \\
+Python OR Java & 4 & [1, 2, 3, 4] \\
+\hline
+\end{tabular}
+\end{table}
+
+\paragraph{NOT查询测试}
+\begin{table}[!htbp]
+\centering
+\begin{tabular}{|c|c|c|}
+\hline
+\textbf{查询表达式} & \textbf{结果数} & \textbf{文档ID} \\
+\hline
+Python AND NOT 编程语言 & 2 & [3, 4] \\
+NOT Python & 2 & [2, 5] \\
+\hline
+\end{tabular}
+\end{table}
+
+\paragraph{复杂布尔查询测试}
+\begin{table}[!htbp]
+\centering
+\begin{tabular}{|c|c|c|}
+\hline
+\textbf{查询表达式} & \textbf{结果数} & \textbf{文档ID} \\
+\hline
+Python AND 机器学习 OR Java & 3 & [2, 3, 4] \\
+\hline
+\end{tabular}
+\end{table}
+
+说明：该查询按照运算符优先级（NOT > AND > OR）解析为：(Python AND 机器学习) OR Java
+
+\subsection{系统性能评估}
+系统进行了性能测试，评估索引构建和查询响应时间：
+
+\paragraph{性能指标}
 \begin{table}[!htbp]
 \centering
 \begin{tabular}{|c|c|}
 \hline
-\textbf{统计指标} & \textbf{数值} \\
+\textbf{性能指标} & \textbf{测试结果} \\
 \hline
-文档总数 & 500 \\
-词汇总数 & 31,544 \\
-唯一词汇数 & 283 \\
-词汇丰富度 & 0.009 \\
-平均每文档词数 & 63.09 \\
+索引构建时间 & < 0.1秒（5个文档） \\
+单词项查询时间 & < 0.001秒 \\
+布尔查询时间 & < 0.002秒 \\
+索引保存时间 & < 0.01秒 \\
+索引加载时间 & < 0.01秒 \\
+内存占用 & 极小（< 1MB） \\
 \hline
 \end{tabular}
 \end{table}
 
-\paragraph{词频分析}
-高频词TOP10统计：
+\paragraph{查询结果示例}
+以"Python"单词项查询为例：
 \begin{table}[!htbp]
 \centering
 \begin{tabular}{|c|c|c|}
 \hline
-\textbf{排名} & \textbf{词汇} & \textbf{频次} \\
+\textbf{文档ID} & \textbf{文档内容} & \textbf{匹配说明} \\
 \hline
-1 & 项目 & 861 \\
-2 & 技术 & 643 \\
-3 & 作品 & 595 \\
-4 & 地区 & 526 \\
-5 & 发展 & 498 \\
-6 & 赛事 & 440 \\
-7 & 表示 & 417 \\
-8 & 具有 & 415 \\
-9 & 专家 & 392 \\
-10 & 环保 & 350 \\
-\hline
-\end{tabular}
-\end{table}
-
-\paragraph{词性分布}
-\begin{table}[!htbp]
-\centering
-\begin{tabular}{|c|c|c|}
-\hline
-\textbf{词性} & \textbf{数量} & \textbf{占比} \\
-\hline
-名词 & 15,028 & 47.64\% \\
-动词 & 9,319 & 29.54\% \\
-名动词 & 2,892 & 9.17\% \\
-形容词 & 1,733 & 5.49\% \\
-简称略语 & 525 & 1.66\% \\
-\hline
-\end{tabular}
-\end{table}
-
-\paragraph{词长分析}
-\begin{table}[!htbp]
-\centering
-\begin{tabular}{|c|c|c|}
-\hline
-\textbf{词长} & \textbf{数量} & \textbf{占比} \\
-\hline
-2字词 & 27,069 & 85.81\% \\
-3字词 & 2,429 & 7.70\% \\
-4字及以上 & 2,046 & 6.49\% \\
-\hline
-\end{tabular}
-\end{table}
-
-\subsection{检索算法性能评估}
-系统在500篇新闻文档上进行了全面的性能测试：
-
-\paragraph{系统性能指标}
-\begin{table}[!htbp]
-\centering
-\begin{tabular}{|c|c|}
-\hline
-\textbf{性能指标} & \textbf{数值} \\
-\hline
-索引构建时间 & 4.49秒 \\
-平均检索时间 & 0.0006秒 \\
-词汇表大小 & 283 \\
-TF-IDF矩阵形状 & 500×283 \\
-矩阵稀疏度 & 0.818 \\
-内存使用 & 0.196MB \\
-\hline
-\end{tabular}
-\end{table}
-
-\paragraph{检索质量评估}
-对10个不同类型的查询进行了测试：
-\begin{table}[!htbp]
-\centering
-\begin{tabular}{|c|c|c|c|}
-\hline
-\textbf{查询类型} & \textbf{查询数量} & \textbf{平均响应时间} & \textbf{成功率} \\
-\hline
-单词查询 & 1 & 0.0005秒 & 100.0\% \\
-短语查询 & 1 & 0.0008秒 & 0.0\% \\
-多词查询 & 1 & 0.0006秒 & 100.0\% \\
-实体查询 & 1 & 0.0006秒 & 100.0\% \\
-技术词汇查询 & 1 & 0.0005秒 & 100.0\% \\
-\hline
-\end{tabular}
-\end{table}
-
-\paragraph{检索结果示例}
-以"人工智能"查询为例：
-\begin{table}[!htbp]
-\centering
-\begin{tabular}{|c|c|c|c|}
-\hline
-\textbf{排名} & \textbf{文档标题} & \textbf{相似度} & \textbf{分类} \\
-\hline
-1 & 人工智能技术在制造业领域取得重大突破 & 0.1347 & 科技 \\
-2 & 人工智能技术在制造业领域取得重大突破 & 0.1347 & 科技 \\
-3 & 人工智能技术在制造业领域取得重大突破 & 0.1347 & 科技 \\
+1 & Python是一种流行的编程语言 & 包含Python \\
+3 & Python在机器学习领域很流行 & 包含Python \\
+4 & 机器学习使用Python和数学 & 包含Python \\
 \hline
 \end{tabular}
 \end{table}
 
 \subsection{系统评估总结}
-基于全面的测试和评估，系统整体表现如下：
+基于全面的功能测试和性能评估，系统整体表现如下：
 
-\paragraph{整体评分}
+\paragraph{功能完整性}
 \begin{table}[!htbp]
 \centering
 \begin{tabular}{|c|c|}
 \hline
-\textbf{评估维度} & \textbf{评分} \\
+\textbf{功能模块} & \textbf{完成度} \\
 \hline
-整体评分 & 72.8/100 \\
-质量评分 & 45.6/100 \\
-性能评分 & 100/100 \\
+文档管理 & 100\% \\
+文本预处理 & 100\% \\
+倒排索引构建 & 100\% \\
+单词项查询 & 100\% \\
+布尔查询 & 100\% \\
+索引持久化 & 100\% \\
+统计信息 & 100\% \\
 \hline
 \end{tabular}
 \end{table}
 
 \paragraph{主要优势}
 \begin{itemize}
-    \item \textbf{响应速度快}：平均检索时间低于50毫秒，满足实时检索需求
-    \item \textbf{检索结果相关性较高}：平均相似度表现良好，能够返回相关文档
-    \item \textbf{系统稳定性好}：在500篇文档规模下运行稳定，内存使用合理
-    \item \textbf{模块化设计}：代码结构清晰，易于维护和扩展
+    \item \textbf{查询速度快}：所有查询类型响应时间均小于2毫秒，满足实时检索需求
+    \item \textbf{布尔查询准确}：AND、OR、NOT运算符及其组合查询结果完全正确
+    \item \textbf{系统稳定性好}：索引构建和查询过程稳定，无错误发生
+    \item \textbf{模块化设计}：代码结构清晰，各组件职责明确，易于维护和扩展
+    \item \textbf{持久化可靠}：索引保存和加载功能正常，数据完整性得到保证
 \end{itemize}
 
 \paragraph{改进建议}
 \begin{itemize}
-    \item \textbf{扩充词典}：增加更多新闻领域专业词汇，提高分词准确性
-    \item \textbf{改进分词算法}：考虑引入更先进的分词技术，如基于深度学习的方法
-    \item \textbf{优化检索算法}：引入语义相似度模型，提高检索质量
-    \item \textbf{增加评估指标}：引入更多评估指标，如NDCG、MAP等
+    \item \textbf{支持短语查询}：利用位置信息实现短语匹配功能
+    \item \textbf{添加相关性排序}：引入TF-IDF或BM25评分机制
+    \item \textbf{支持文档更新}：实现文档的删除和修改功能
+    \item \textbf{优化大规模索引}：针对大规模文档集合进行性能优化
+    \item \textbf{增强查询语法}：支持更复杂的查询表达式和通配符
 \end{itemize}
 
 \subsection{实验结论}
-本实验成功构建了一个基于结巴分词和TF-IDF算法的中文新闻稀疏检索系统原型。系统在500篇新闻文档上表现出良好的性能：
+本实验成功构建了一个基于倒排索引的中文文档检索系统。系统在测试中表现出良好的性能：
 
 \begin{enumerate}
-    \item \textbf{分词效果}：结巴分词结合自定义词典和停用词过滤，能够有效处理中文文本，词汇丰富度为0.009，分词质量评分为100分。
+    \item \textbf{索引构建}：倒排索引数据结构设计合理，能够高效地建立词项到文档的映射关系，并记录位置信息。
     
-    \item \textbf{向量化效果}：TF-IDF算法能够有效提取文档特征，构建了500×283的稀疏矩阵，稀疏度为0.818，内存使用仅0.196MB。
+    \item \textbf{查询处理}：单词项查询和布尔查询功能完整，支持AND、OR、NOT运算符及其组合，查询结果准确。
     
-    \item \textbf{检索性能}：系统平均检索时间为0.0006秒，支持多种查询类型，在单词查询、多词查询等技术词汇查询上表现良好。
+    \item \textbf{文本预处理}：结巴分词结合停用词过滤和文本规范化，能够有效处理中文文本。
     
-    \item \textbf{系统稳定性}：在500篇文档规模下，系统运行稳定，索引构建时间4.49秒，满足实际应用需求。
+    \item \textbf{系统性能}：查询响应时间极短（< 2ms），索引构建和持久化功能稳定可靠。
 \end{enumerate}
 
-实验验证了基于TF-IDF的稀疏检索方法在中文新闻检索任务中的有效性，为后续的检索系统优化和扩展提供了良好的基础。
+实验验证了倒排索引在文档检索中的有效性，系统实现了布尔检索模型的核心功能，为后续的检索系统优化和功能扩展奠定了良好的基础。
 
 \section{附录：部分源代码}
 
-\subsection{中文分词器核心代码}
+\subsection{文本预处理器核心代码}
 \begin{verbatim}
-class OptimizedChineseTokenizer:
-    """优化的中文分词器"""
+class TextPreprocessor:
+    """文本预处理类"""
     
-    def __init__(self, custom_dict_path=None, stopwords_path=None):
-        # 设置结巴分词模式
-        jieba.enable_parallel(4)  # 并行分词
+    def __init__(self, stopwords_path: Optional[str] = None):
+        """初始化文本预处理器"""
+        self._stopwords: Set[str] = set()
+        if stopwords_path:
+            self.load_stopwords(stopwords_path)
+    
+    def tokenize(self, text: str) -> List[str]:
+        """对文本进行分词和预处理"""
+        if not text:
+            return []
         
-        # 加载自定义词典
-        if custom_dict_path and Path(custom_dict_path).exists():
-            jieba.load_userdict(custom_dict_path)
+        # 1. 文本规范化
+        normalized_text = self.preprocess(text)
         
         # 加载停用词
         self.stopwords = self._load_stopwords(stopwords_path)
         
-        # 词性过滤规则
-        self.keep_pos = {
-            'n', 'nr', 'ns', 'nt', 'nw', 'nz',  # 名词类
-            'v', 'vd', 'vn',                      # 动词类
-            'a', 'ad', 'an',                      # 形容词类
-            'i', 'j', 'l'                         # 成语、简称、习用语
-        }
-    
-    def tokenize_document(self, text, keep_pos=True):
-        """对单个文档进行分词"""
-        if not text:
+        
+        if not normalized_text:
             return []
         
-        # 预处理文本
-        text = self.preprocess_text(text)
-        if not text:
-            return []
+        # 2. 使用 jieba 进行分词
+        tokens = jieba.lcut(normalized_text)
         
-        if keep_pos:
-            # 带词性标注的分词
-            words_with_pos = list(pseg.cut(text))
-            
-            filtered_tokens = []
-            for word, pos in words_with_pos:
-                if self.is_valid_token(word, pos):
-                    filtered_tokens.append((word, pos))
-            
-            return filtered_tokens
-        else:
-            # 只分词，不标注词性
-            words = jieba.cut(text, cut_all=False)
-            filtered_words = []
-            
-            for word in words:
-                if self.is_valid_token(word):
-                    filtered_words.append(word)
-            
-            return filtered_words
+        # 3. 过滤停用词和空白词项
+        filtered_tokens = [
+            token.strip() 
+            for token in tokens 
+            if token.strip() and token.strip() not in self._stopwords
+        ]
+        
+        return filtered_tokens
 \end{verbatim}
 
-\subsection{TF-IDF向量化器核心代码}
+\subsection{倒排索引核心代码}
 \begin{verbatim}
-class TFIDFVectorizer:
-    """TF-IDF向量化器"""
+class InvertedIndex:
+    """倒排索引类"""
     
-    def _calculate_tf(self, tokens):
-        """计算词频 (Term Frequency)"""
-        tf_dict = Counter(tokens)
-        doc_length = len(tokens)
-        
-        if doc_length == 0:
-            return {}
-        
-        # 计算TF值
-        tf_normalized = {}
-        for token, count in tf_dict.items():
-            if token in self.vocabulary:
-                if self.use_log_tf:
-                    # 对数归一化: 1 + log(tf)
-                    tf_normalized[token] = 1 + math.log(count) if count > 0 else 0
-                else:
-                    # 简单归一化: tf / doc_length
-                    tf_normalized[token] = count / doc_length
-        
-        return tf_normalized
+    def __init__(self):
+        """初始化倒排索引"""
+        # 倒排索引：词项 -> 倒排列表
+        self._index: Dict[str, List[Posting]] = {}
+        # 文档长度记录
+        self._doc_lengths: Dict[int, int] = {}
     
-    def _calculate_idf(self, tokenized_documents):
-        """计算逆文档频率 (Inverse Document Frequency)"""
-        N = len(tokenized_documents)  # 文档总数
-        self.n_documents = N
+    def build_index(self, doc_id: int, tokens: List[str]) -> None:
+        """为文档构建倒排索引"""
+        # 记录文档长度
+        self._doc_lengths[doc_id] = len(tokens)
         
-        # 计算每个词出现在多少个文档中
-        document_frequencies = Counter()
+        # 记录每个词项在当前文档中的位置
+        term_positions: Dict[str, List[int]] = defaultdict(list)
         
-        for doc_tokens in tokenized_documents:
-            tokens = self._extract_tokens(doc_tokens)
-            unique_tokens = set(tokens)
+        # 遍历词项，记录位置
+        for position, term in enumerate(tokens):
+            term_positions[term].append(position)
+        
+        # 更新倒排索引
+        for term, positions in term_positions.items():
+            if term not in self._index:
+                self._index[term] = []
             
-            for token in unique_tokens:
-                if token in self.vocabulary:
-                    document_frequencies[token] += 1
-        
-        # 计算IDF: log(N / df)
-        for token in self.vocabulary:
-            df = document_frequencies.get(token, 0)
-            if df > 0:
-                self.idf_values[token] = math.log(N / df)
-            else:
-                self.idf_values[token] = 0
+            # 创建 Posting 对象
+            posting = Posting(
+                doc_id=doc_id,
+                positions=positions,
+                term_freq=len(positions)
+            )
+            self._index[term].append(posting)
+    
+    def get_posting_list(self, term: str) -> List[Posting]:
+        """获取词项的倒排列表"""
+        return self._index.get(term, [])
 \end{verbatim}
 
-\subsection{余弦相似度检索器核心代码}
+\subsection{布尔查询处理器核心代码}
 \begin{verbatim}
-class CosineRetrieval:
-    """基于余弦相似度的检索器"""
+class QueryProcessor:
+    """查询处理器类"""
     
-    def cosine_similarity_manual(self, vec1, vec2):
-        """手动实现余弦相似度计算"""
-        # 确保向量是一维的
-        vec1 = vec1.flatten()
-        vec2 = vec2.flatten()
-        
-        # 计算点积
-        dot_product = np.dot(vec1, vec2)
-        
-        # 计算向量的L2范数
-        norm_vec1 = np.linalg.norm(vec1)
-        norm_vec2 = np.linalg.norm(vec2)
-        
-        # 避免除零错误
-        if norm_vec1 == 0 or norm_vec2 == 0:
-            return 0.0
-        
-        # 计算余弦相似度
-        cosine_sim = dot_product / (norm_vec1 * norm_vec2)
-        return float(cosine_sim)
-    
-    def search(self, query_text, top_k=10, similarity_threshold=0.01):
-        """执行余弦相似度检索"""
-        # 1. 查询分词
-        query_tokens = self.tfidf_retrieval.tokenizer.tokenize_document(query_text, keep_pos=False)
-        
-        if not query_tokens:
+    def and_query(self, terms: List[str]) -> List[int]:
+        """执行 AND 查询（交集运算）"""
+        if not terms:
             return []
         
-        # 2. 查询向量化
-        query_vector = self.tfidf_retrieval.vectorizer.transform_query(query_tokens)
+        # 对每个词项获取文档集合
+        doc_sets = []
+        for term in terms:
+            processed_tokens = self._preprocessor.tokenize(term)
+            if not processed_tokens:
+                return []
+            
+            processed_term = processed_tokens[0]
+            posting_list = self._index.get_posting_list(processed_term)
+            doc_ids = {posting.doc_id for posting in posting_list}
+            doc_sets.append(doc_ids)
         
-        # 3. 计算与所有文档的相似度
-        similarities = self.batch_cosine_similarity(
-            query_vector, 
-            self.tfidf_retrieval.doc_vectors
-        )
+        # 计算交集
+        result_set = doc_sets[0]
+        for doc_set in doc_sets[1:]:
+            result_set = result_set.intersection(doc_set)
         
-        # 4. 过滤低相似度结果
-        valid_indices = np.where(similarities > similarity_threshold)[0]
-        
-        if len(valid_indices) == 0:
+        return sorted(list(result_set))
+    
+    def or_query(self, terms: List[str]) -> List[int]:
+        """执行 OR 查询（并集运算）"""
+        if not terms:
             return []
         
-        # 5. 排序并获取top-k结果
-        valid_similarities = similarities[valid_indices]
-        sorted_indices = valid_indices[np.argsort(valid_similarities)[::-1]]
+        result_set = set()
+        for term in terms:
+            processed_tokens = self._preprocessor.tokenize(term)
+            if not processed_tokens:
+                continue
+            
+            processed_term = processed_tokens[0]
+            posting_list = self._index.get_posting_list(processed_term)
+            doc_ids = {posting.doc_id for posting in posting_list}
+            result_set = result_set.union(doc_ids)
         
-        top_indices = sorted_indices[:top_k]
-        
-        # 6. 构造结果
-        results = []
-        for idx in top_indices:
-            results.append({
-                'document_id': int(idx),
+        return sorted(list(result_set))
+\end{verbatim}
                 'similarity_score': float(similarities[idx]),
                 'document': self.documents[idx],
                 'title': self.documents[idx].get('title', ''),
                 'content_preview': self.documents[idx].get('content', '')[:200] + '...',
-                'category': self.documents[idx].get('category', '未分类')
-            })
-        
-        return results
+        return sorted(list(result_set))
 \end{verbatim}
-
 
 \section{写在最后}
 \subsection{项目总结}
-本实验成功实现了一个完整的中文新闻稀疏检索系统，主要成果包括：
+本实验成功实现了一个完整的倒排索引检索系统，主要成果包括：
 
 \begin{itemize}
-    \item \textbf{系统架构}：采用模块化设计，实现了数据收集、预处理、向量化、检索和评估的完整流程
-    \item \textbf{分词优化}：基于结巴分词库，结合自定义词典和停用词过滤，实现了高质量的中文分词
-    \item \textbf{检索算法}：实现了TF-IDF向量化和余弦相似度检索，支持高效的文档检索
-    \item \textbf{性能评估}：建立了完整的评估体系，包括质量评估和性能测试
-    \item \textbf{实验数据}：在500篇新闻文档上进行了全面测试，验证了系统的有效性
+    \item \textbf{系统架构}：采用模块化设计，实现了文档管理、文本预处理、索引构建、查询处理和持久化的完整流程
+    \item \textbf{倒排索引}：设计并实现了高效的倒排索引数据结构，支持词项位置信息记录
+    \item \textbf{布尔查询}：实现了完整的布尔检索模型，支持AND、OR、NOT运算符及其组合
+    \item \textbf{文本处理}：基于结巴分词库，实现了中文分词、停用词过滤和文本规范化
+    \item \textbf{系统测试}：建立了完整的测试体系，验证了系统的正确性和稳定性
 \end{itemize}
 
 \subsection{技术特点}
 \begin{itemize}
-    \item \textbf{稀疏检索}：采用TF-IDF算法构建稀疏向量空间，内存使用效率高
-    \item \textbf{中文优化}：针对中文文本特点，优化了分词和预处理流程
-    \item \textbf{实时检索}：平均检索时间低于50毫秒，满足实时应用需求
+    \item \textbf{高效索引}：倒排索引提供O(1)的词项查找时间复杂度
+    \item \textbf{布尔检索}：基于集合运算实现布尔查询，支持复杂查询表达式
+    \item \textbf{位置信息}：记录词项在文档中的位置，为短语查询等高级功能预留接口
     \item \textbf{可扩展性}：模块化设计便于功能扩展和性能优化
+    \item \textbf{持久化}：支持索引的保存和加载，避免重复构建
 \end{itemize}
 
 \subsection{未来工作}
 \begin{itemize}
-    \item 引入深度学习模型，提高检索质量和语义理解能力
-    \item 扩展数据集规模，测试系统在大规模文档上的性能
-    \item 增加更多评估指标，如NDCG、MAP等
-    \item 优化系统架构，支持分布式部署和负载均衡
+    \item 实现短语查询功能，利用位置信息进行精确匹配
+    \item 引入相关性排序算法，如TF-IDF或BM25
+    \item 支持文档的动态更新和删除操作
+    \item 优化大规模文档集合的索引构建和查询性能
+    \item 实现分布式索引，支持更大规模的文档检索
+\end{itemize}
+
+\subsection{发布地址}
+\begin{itemize}
+    \item Github: \url{https://github.com/eleliauk/information-search}
 \end{itemize}
 
 %%----------- 参考文献 -------------------%%
